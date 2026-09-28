@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebStudio — сайты и IT-решения для бизнеса в Астане</title>
+<meta name="description" content="Создаём одностраничные и многостраничные сайты, корпоративные порталы и интернет-магазины. Устанавливаем Windows, настраиваем IP-телефонию.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F5FB;--surface:#fff;--ink:#0E1B4D;--muted:#55608a;--line:#dde2f2;--brand:#2F5BFF;--brand-ink:#fff;--soft:#E3E9FF;--amber:#FFB547;--r:22px;
+--display:'Unbounded','Manrope',system-ui,sans-serif;--body:'Manrope',system-ui,sans-serif}
+@media(prefers-color-scheme:dark){:root{--bg:#0A1230;--surface:#111C45;--ink:#EEF1FF;--muted:#a3adda;--line:#22306a;--soft:#18265a;--brand:#5B7DFF}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font:400 1.0625rem/1.65 var(--body);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+section{padding:clamp(3.5rem,8vw,6.5rem) 0}
+h1,h2,h3{font-family:var(--display);line-height:1.15;letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,4vw,2.7rem);max-width:20ch}
+.lead{color:var(--muted);max-width:56ch;margin-top:1rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.6rem;border-radius:999px;font-weight:700;border:2px solid var(--brand);background:var(--brand);color:var(--brand-ink);cursor:pointer;font-size:1rem;font-family:inherit;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px var(--brand)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+/* header */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:1rem}
+.logo{font:700 1.15rem var(--display);display:flex;align-items:center;gap:.6rem}
+.logo i{width:30px;height:30px;border-radius:9px;background:var(--brand);display:grid;place-items:center;color:#fff;font:700 .9rem var(--display);font-style:normal}
+nav ul{list-style:none;padding:0;display:flex;gap:.25rem;align-items:center}
+nav a,.sub-btn{padding:.6rem 1rem;border-radius:999px;font-weight:500;display:block;background:none;border:0;color:inherit;font:inherit;font-weight:500;cursor:pointer}
+nav a:hover,.sub-btn:hover{background:var(--soft)}
+.has-sub{position:relative}
+.sub-btn::after{content:"";display:inline-block;width:.45em;height:.45em;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg) translateY(-2px);margin-left:.5rem}
+.sub{position:absolute;top:100%;left:0;min-width:270px;padding:.5rem;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 50px -20px rgba(14,27,77,.35);opacity:0;visibility:hidden;transform:translateY(8px);transition:.2s}
+.has-sub:hover .sub,.has-sub:focus-within .sub,.has-sub.open .sub{opacity:1;visibility:visible;transform:none}
+.sub a{border-radius:12px}
+.sub small{display:block;color:var(--muted);font-size:.82rem}
+.nav .cta{display:none}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-size:1.3rem}
+@media(min-width:1000px){.nav .cta{display:inline-flex;padding:.7rem 1.3rem}}
+@media(max-width:999px){
+.burger{display:block}
+nav{position:absolute;inset:72px 0 auto 0;background:var(--surface);border-bottom:1px solid var(--line);padding:1rem 1.25rem 1.5rem;display:none}
+nav.open{display:block}
+nav ul{flex-direction:column;align-items:stretch}
+.sub{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 0 0 1rem;display:none;min-width:0}
+.has-sub.open .sub{display:block}
+}
+/* hero */
+.hero{padding-top:clamp(2.5rem,6vw,5rem);overflow:hidden}
+.hero .wrap{display:grid;gap:3rem;align-items:center}
+@media(min-width:960px){.hero .wrap{grid-template-columns:1.05fr .95fr}}
+.hero h1{font-size:clamp(2.1rem,5.6vw,4rem)}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero .acts{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.facts{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin-top:2.2rem;padding:0;list-style:none;color:var(--muted);font-weight:500;font-size:.95rem}
+.facts li::before{content:"✓";color:var(--brand);font-weight:700;margin-right:.45rem}
+.browser{background:var(--surface);border:1px solid var(--line);border-radius:26px;box-shadow:0 40px 80px -40px rgba(47,91,255,.55);overflow:hidden;transform:rotate(1.2deg)}
+.bar{display:flex;gap:.4rem;align-items:center;padding:.8rem 1rem;border-bottom:1px solid var(--line);background:var(--soft)}
+.bar i{width:11px;height:11px;border-radius:50%;background:var(--line)}
+.bar span{margin-left:.7rem;font-size:.82rem;color:var(--muted);background:var(--surface);padding:.2rem .9rem;border-radius:99px;flex:1;max-width:260px}
+.cfg{padding:1.4rem}
+.cfg h3{font-size:1.05rem;margin-bottom:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{padding:.55rem 1rem;border-radius:99px;border:1.5px solid var(--line);background:none;color:var(--ink);font:500 .95rem var(--body);cursor:pointer;transition:.2s}
+.chip[aria-pressed=true]{background:var(--brand);border-color:var(--brand);color:#fff}
+.out{margin-top:1.4rem;padding:1.2rem;border-radius:18px;background:var(--soft);display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.out b{display:block;font:700 1.35rem var(--display)}
+.out span{color:var(--muted);font-size:.85rem}
+.out p{grid-column:1/-1;font-size:.95rem;color:var(--muted)}
+.cfg .btn{width:100%;justify-content:center;margin-top:1rem}
+/* services */
+.bento{display:grid;gap:1rem;margin-top:2.5rem;grid-template-columns:repeat(6,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.7rem;display:flex;flex-direction:column;gap:.6rem;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--brand)}
+.card h3{font-size:1.15rem}
+.card p{color:var(--muted);font-size:.98rem}
+.card .more{margin-top:auto;font-weight:700;color:var(--brand)}
+.ico{width:48px;height:48px;border-radius:14px;background:var(--soft);display:grid;place-items:center;font-size:1.4rem}
+.bento .a{grid-column:span 3;background:var(--brand);color:#fff;border-color:var(--brand)}
+.bento .a p,.bento .a .more{color:#dfe6ff}.bento .a .ico{background:rgba(255,255,255,.18)}
+.bento .b{grid-column:span 3}.bento .c{grid-column:span 2}
+.bento .d{grid-column:span 4;background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.bento .d p{color:#b9c2ec}.bento .d .ico{background:rgba(255,255,255,.12)}
+.bento .d .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
+.tags span{padding:.35rem .9rem;border-radius:99px;background:rgba(255,255,255,.12);font-size:.9rem}
+@media(max-width:900px){.bento .a,.bento .b,.bento .c,.bento .d{grid-column:span 6}}
+/* steps */
+.steps{display:grid;gap:1rem;margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));counter-reset:s;padding:0;list-style:none}
+.steps li{counter-increment:s;padding:1.5rem;border-left:3px solid var(--brand);background:var(--surface);border-radius:0 var(--r) var(--r) 0}
+.steps li::before{content:counter(s);font:700 1.8rem var(--display);color:var(--brand);display:block;margin-bottom:.3rem}
+.steps h3{font-size:1.05rem;margin-bottom:.3rem}.steps p{color:var(--muted);font-size:.96rem}
+/* pricing */
+.plans{display:grid;gap:1rem;margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:2rem;display:flex;flex-direction:column;gap:1rem}
+.plan.hot{border:2px solid var(--brand);position:relative}
+.plan.hot::before{content:"Выбирают чаще всего";position:absolute;top:-14px;left:1.5rem;background:var(--amber);color:#3a2600;font-weight:700;font-size:.82rem;padding:.25rem .8rem;border-radius:99px}
+.plan .price{font:700 1.9rem var(--display)}.plan .price small{font:500 .9rem var(--body);color:var(--muted)}
+.plan ul{list-style:none;padding:0;display:grid;gap:.5rem;color:var(--muted);font-size:.97rem}
+.plan li::before{content:"✓";color:var(--brand);font-weight:700;margin-right:.5rem}
+.plan .btn{margin-top:auto;justify-content:center}
+.note{margin-top:1.2rem;color:var(--muted);font-size:.92rem}
+/* why */
+.why{display:grid;gap:1rem;margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.why div{padding:1.6rem;border-radius:var(--r);background:var(--soft)}
+.why h3{font-size:1.05rem;margin-bottom:.4rem}.why p{color:var(--muted);font-size:.97rem}
+/* works */
+.works{display:grid;gap:1rem;margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.work{border-radius:var(--r);overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.shot{aspect-ratio:16/10;display:grid;place-items:center;font:700 1.2rem var(--display);color:#fff}
+.work:nth-child(1) .shot{background:linear-gradient(135deg,#2F5BFF,#7b95ff)}
+.work:nth-child(2) .shot{background:linear-gradient(135deg,#0E1B4D,#3b4f9e)}
+.work:nth-child(3) .shot{background:linear-gradient(135deg,#ff9a3c,#ffb547);color:#3a2600}
+.work div:last-child{padding:1.1rem 1.3rem}.work small{color:var(--muted)}
+/* faq */
+.faq{max-width:820px;margin-top:2.5rem}
+details{border-bottom:1px solid var(--line);padding:1.2rem 0}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--brand);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);margin-top:.7rem}
+/* cta */
+.cta-box{background:var(--ink);color:var(--bg);border-radius:32px;padding:clamp(2rem,6vw,4rem);display:grid;gap:2.5rem}
+@media(min-width:900px){.cta-box{grid-template-columns:1fr 1fr;align-items:center}}
+.cta-box h2{max-width:14ch}.cta-box p{color:#b9c2ec;margin-top:1rem}
+form{display:grid;gap:.8rem}
+label{font-size:.9rem;font-weight:500}
+input,select,textarea{width:100%;padding:.9rem 1.1rem;border-radius:14px;border:1.5px solid #34438a;background:#0b1440;color:#fff;font:inherit}
+input::placeholder,textarea::placeholder{color:#8792c9}
+.ok{display:none;padding:1rem;border-radius:14px;background:#123a2f;color:#b8f5dc}
+/* footer */
+footer{padding:3rem 0 2rem;border-top:1px solid var(--line)}
+.foot{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+footer h3{font:700 1rem var(--body);margin-bottom:.7rem}
+footer ul{list-style:none;padding:0;display:grid;gap:.4rem;color:var(--muted)}
+footer a:hover{color:var(--brand)}
+.copy{margin-top:2rem;color:var(--muted);font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="wrap nav">
+  <a href="index.html" class="logo" aria-label="WebStudio, главная"><i>W</i>WebStudio</a>
+  <nav id="nav" aria-label="Главное меню">
+   <ul>
+    <li><a href="index.html" aria-current="page">Главная</a></li>
+    <li><a href="about.html">О нас</a></li>
+    <li class="has-sub" id="hs">
+     <button class="sub-btn" aria-haspopup="true" aria-expanded="false" id="subBtn">Услуги</button>
+     <div class="sub" role="menu">
+      <a href="odnostranichnye-sajty.html" role="menuitem">Одностраничные сайты<small>Лендинг под рекламу и акции</small></a>
+      <a href="mnogostranichnye-sajty.html" role="menuitem">Многостраничные сайты<small>Каталог услуг, блог, разделы</small></a>
+      <a href="korporativnye-sajty.html" role="menuitem">Корпоративные сайты<small>Портал компании с CRM</small></a>
+      <a href="internet-magaziny.html" role="menuitem">Интернет-магазины<small>Каталог, корзина, онлайн-оплата</small></a>
+     </div>
+    </li>
+    <li><a href="contacts.html">Контакты</a></li>
+   </ul>
+  </nav>
+  <a href="#zayavka" class="btn cta">Обсудить проект</a>
+  <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">☰</button>
+ </div>
+</header>
+
+<main>
+<section class="hero">
+ <div class="wrap">
+  <div>
+   <h1>Сайты, которые приводят клиентов, а не просто <em>выглядят красиво</em></h1>
+   <p class="lead">Делаем одностраничники, многостраничные сайты, корпоративные порталы и интернет-магазины. Заодно настроим компьютеры и IP-телефонию, чтобы всё в вашем офисе работало вместе.</p>
+   <div class="acts">
+    <a href="#zayavka" class="btn">Получить расчёт за 1 день</a>
+    <a href="#uslugi" class="btn ghost">Смотреть услуги</a>
+   </div>
+   <ul class="facts"><li>Договор и фиксированная цена</li><li>Адаптив под все экраны</li><li>Права на сайт — ваши</li></ul>
+  </div>
+  <div class="browser" aria-label="Калькулятор сайта">
+   <div class="bar"><i></i><i></i><i></i><span>ваш-сайт.kz</span></div>
+   <div class="cfg">
+    <h3>Какой сайт вам нужен?</h3>
+    <div class="chips" id="chips">
+     <button class="chip" aria-pressed="true" data-k="one">Одностраничный</button>
+     <button class="chip" aria-pressed="false" data-k="multi">Многостраничный</button>
+     <button class="chip" aria-pressed="false" data-k="corp">Корпоративный</button>
+     <button class="chip" aria-pressed="false" data-k="shop">Интернет-магазин</button>
+    </div>
+    <div class="out" aria-live="polite">
+     <div><b id="oPrice">от 120 000 ₸</b><span>ориентировочная цена</span></div>
+     <div><b id="oTime">7–10 дней</b><span>срок запуска</span></div>
+     <p id="oText"></p>
+    </div>
+    <a href="#zayavka" class="btn">Уточнить стоимость</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="uslugi">
+ <div class="wrap">
+  <h2>Всё для сайта и IT вашего бизнеса</h2>
+  <p class="lead">Разработку сайтов и обслуживание техники ведёт одна команда, поэтому не нужно искать разных подрядчиков.</p>
+  <div class="bento">
+   <a class="card a" href="odnostranichnye-sajty.html"><div class="ico">🚀</div><h3>Одностраничные сайты</h3><p>Продающий лендинг с формой заявки, WhatsApp и подключённой рекламой.</p><span class="more">Подробнее</span></a>
+   <a class="card b" href="mnogostranichnye-sajty.html"><div class="ico">🗂️</div><h3>Многостраничные сайты</h3><p>Услуги, портфолио, блог и контакты. Удобная админка, чтобы вы сами меняли тексты.</p><span class="more">Подробнее</span></a>
+   <a class="card c" href="korporativnye-sajty.html"><div class="ico">🏢</div><h3>Корпоративные сайты</h3><p>Сайт компании с разделами, новостями и интеграцией с CRM.</p><span class="more">Подробнее</span></a>
+   <a class="card c" href="internet-magaziny.html"><div class="ico">🛒</div><h3>Интернет-магазины</h3><p>Каталог, фильтры, корзина и приём оплаты картой.</p><span class="more">Подробнее</span></a>
+   <div class="card c"><div class="ico">🛠️</div><h3>Поддержка сайта</h3><p>Домен, хостинг, обновления и правки после запуска.</p></div>
+   <div class="card d"><div class="ico">💻</div><h3>IT-услуги для офиса</h3><p>Выезжаем и настраиваем всё на месте.</p><div class="tags"><span>Установка Windows</span><span>Настройка IP-телефонии</span><span>Подключение АТС</span></div></div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <h2>Как мы работаем</h2>
+  <ol class="steps">
+   <li><h3>Заявка и бриф</h3><p>Вы рассказываете о задаче, мы уточняем детали и называем цену.</p></li>
+   <li><h3>Договор и предоплата</h3><p>Фиксируем сроки и стоимость, в процессе цена не растёт.</p></li>
+   <li><h3>Дизайн и разработка</h3><p>Показываем макет, вносим правки, затем верстаем и подключаем функции.</p></li>
+   <li><h3>Запуск и обучение</h3><p>Подключаем домен, проверяем на всех устройствах и объясняем, как управлять сайтом.</p></li>
+  </ol>
+ </div>
+</section>
+
+<section id="ceny">
+ <div class="wrap">
+  <h2>Понятные пакеты и цены</h2>
+  <p class="lead">Точную стоимость назовём после короткого разговора. Ниже ориентиры.</p>
+  <!-- ЦЕНЫ ПОДСТАВЬТЕ СВОИ -->
+  <div class="plans">
+   <div class="plan"><h3>Одностраничный</h3><div class="price">от 120 000 ₸</div><ul><li>Индивидуальный дизайн</li><li>Адаптив и форма заявки</li><li>Домен .kz на 1 год</li></ul><a href="#zayavka" class="btn ghost">Заказать</a></div>
+   <div class="plan hot"><h3>Многостраничный</h3><div class="price">от 250 000 ₸</div><ul><li>До 10 страниц</li><li>Админка для правок</li><li>Базовое SEO и аналитика</li><li>Обучение по управлению</li></ul><a href="#zayavka" class="btn">Заказать</a></div>
+   <div class="plan"><h3>Интернет-магазин</h3><div class="price">от 350 000 ₸</div><ul><li>Каталог и фильтры</li><li>Корзина и оплата картой</li><li>Загрузка товаров</li></ul><a href="#zayavka" class="btn ghost">Заказать</a></div>
+  </div>
+  <p class="note">Корпоративные сайты и порталы считаем индивидуально. Установка Windows и настройка IP-телефонии оплачиваются отдельно.</p>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <h2>Почему выбирают нас</h2>
+  <div class="why">
+   <div><h3>Пишем код сами</h3><p>Без конструкторов и чужих шаблонов: сайт быстро грузится и легко растёт.</p></div>
+   <div><h3>Работаем по договору</h3><p>Цена и сроки прописаны, права на сайт и исходники переходят вам.</p></div>
+   <div><h3>Отвечаем за результат</h3><p>После запуска остаёмся на связи и помогаем с правками и рекламой.</p></div>
+   <div><h3>Знаем и сайты, и технику</h3><p>Если нужно, сразу настроим офисные компьютеры и телефонию.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="raboty">
+ <div class="wrap">
+  <h2>Наши работы</h2>
+  <p class="lead">Здесь появятся ваши реальные проекты. Пока стоят заготовки.</p>
+  <div class="works">
+   <div class="work"><div class="shot">Лендинг</div><div><b>Название проекта</b><br><small>Одностраничный сайт</small></div></div>
+   <div class="work"><div class="shot">Каталог</div><div><b>Название проекта</b><br><small>Многостраничный сайт</small></div></div>
+   <div class="work"><div class="shot">Магазин</div><div><b>Название проекта</b><br><small>Интернет-магазин</small></div></div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <h2>Частые вопросы</h2>
+  <div class="faq">
+   <details><summary>Сколько времени занимает создание сайта?</summary><p>Лендинг делаем за 7–10 дней, многостраничный сайт и магазин занимают от 3 недель. Точный срок называем в договоре.</p></details>
+   <details><summary>Что нужно от меня для старта?</summary><p>Рассказать о бизнесе и прислать логотип, фото и тексты, если они есть. Если нет, поможем с материалами.</p></details>
+   <details><summary>Смогу ли я сам менять информацию на сайте?</summary><p>Да. Мы подключаем простую админку и показываем, как ею пользоваться.</p></details>
+   <details><summary>Вы делаете продвижение и рекламу?</summary><p>Закладываем базовое SEO и подключаем аналитику. Настройку рекламы обсуждаем отдельно.</p></details>
+   <details><summary>Выезжаете ли вы для установки Windows и настройки телефонии?</summary><p>Да, приезжаем в офис или настраиваем удалённо. Стоимость зависит от количества рабочих мест.</p></details>
+  </div>
+ </div>
+</section>
+
+<section id="zayavka">
+ <div class="wrap">
+  <div class="cta-box">
+   <div><h2>Расскажите о задаче, и мы посчитаем стоимость</h2><p>Ответим в течение рабочего дня и предложим решение с ценой и сроками.</p></div>
+   <form id="lead" novalidate>
+    <div><label for="n">Ваше имя</label><input id="n" required placeholder="Как к вам обращаться"></div>
+    <div><label for="p">Телефон или WhatsApp</label><input id="p" type="tel" required placeholder="+7 ___ ___ __ __"></div>
+    <div><label for="t">Что нужно</label><select id="t"><option>Одностраничный сайт</option><option>Многостраничный сайт</option><option>Корпоративный сайт</option><option>Интернет-магазин</option><option>Установка Windows</option><option>Настройка IP-телефонии</option></select></div>
+    <button class="btn" type="submit" style="justify-content:center">Отправить заявку</button>
+    <div class="ok" id="ok" role="status">Спасибо! Мы скоро свяжемся с вами.</div>
+   </form>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="foot">
+   <div><a href="index.html" class="logo"><i>W</i>WebStudio</a><p class="lead" style="font-size:.95rem">Сайты и IT-решения для бизнеса в Астане.</p></div>
+   <div><h3>Меню</h3><ul><li><a href="index.html">Главная</a></li><li><a href="about.html">О нас</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+   <div><h3>Услуги</h3><ul><li><a href="odnostranichnye-sajty.html">Одностраничные сайты</a></li><li><a href="mnogostranichnye-sajty.html">Многостраничные сайты</a></li><li><a href="korporativnye-sajty.html">Корпоративные сайты</a></li><li><a href="internet-magaziny.html">Интернет-магазины</a></li></ul></div>
+   <div><h3>Связь</h3><ul><li><a href="tel:+77000000000">+7 700 000 00 00</a></li><li><a href="https://wa.me/77000000000">WhatsApp</a></li><li>Астана, Казахстан</li></ul></div>
+  </div>
+  <p class="copy">© 2026 WebStudio. Все права защищены.</p>
+ </div>
+</footer>
+
+<script>
+const D={one:["от 120 000 ₸","7–10 дней","Лендинг с формой заявки под рекламу или акцию."],
+multi:["от 250 000 ₸","3–4 недели","Несколько страниц: услуги, портфолио, блог, контакты."],
+corp:["от 350 000 ₸","4–6 недель","Сайт компании с разделами, новостями и интеграцией с CRM."],
+shop:["от 350 000 ₸","4–6 недель","Каталог, фильтры, корзина и онлайн-оплата картой."]};
+const chips=document.querySelectorAll('.chip');
+function pick(k){chips.forEach(c=>c.setAttribute('aria-pressed',c.dataset.k===k));
+oPrice.textContent=D[k][0];oTime.textContent=D[k][1];oText.textContent=D[k][2]}
+chips.forEach(c=>c.onclick=()=>pick(c.dataset.k));pick('one');
+burger.onclick=()=>{const o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.textContent=o?'✕':'☰'};
+subBtn.onclick=()=>{const o=hs.classList.toggle('open');subBtn.setAttribute('aria-expanded',o)};
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+lead.onsubmit=e=>{e.preventDefault();if(!n.value.trim()||!p.value.trim()){(n.value.trim()?p:n).focus();return}
+ok.style.display='block';lead.reset()}; // TODO: подключить отправку заявки (email / Telegram / WhatsApp)
+</script>
+</body>
+</html>
